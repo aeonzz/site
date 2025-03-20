@@ -21,12 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ReactLenis
-        root
-        options={{
-          duration: 1,
-        }}
-      >
+      <ReactLenis root>
         <body
           className={`${geistMono.className} antialiased selection:bg-foreground selection:text-background`}
         >
