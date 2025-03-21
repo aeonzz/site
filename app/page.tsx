@@ -80,7 +80,7 @@ export default function Home() {
       pin: true,
       start: "top top",
       end: "bottom top",
-      scrub: true,
+      scrub: 0.5,
       animation: tl2,
     });
 
@@ -89,7 +89,7 @@ export default function Home() {
         trigger: ".section2",
         start: "top center",
         end: "bottom center",
-        scrub: true,
+        scrub: 0.5,
       },
       ease: "expo.out",
       translateY: 100,
@@ -99,7 +99,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: ".section3",
         start: "top bottom",
-        scrub: true,
+        scrub: 0.5,
       },
       translateY: 300,
       duration: 5,
@@ -109,7 +109,7 @@ export default function Home() {
     gsap.to(".section3container", {
       scrollTrigger: {
         trigger: ".footer",
-        scrub: true,
+        scrub: 0.5,
       },
       scale: 0.9,
       ease: "expo.out",

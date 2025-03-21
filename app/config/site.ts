@@ -21,6 +21,6 @@ export const projects = [
     header: "Todo list",
     description:
       "A minimal and intuitive to-do list app built with React, TypeScript, and Tailwind CSS. Features task management, drag-and-drop reordering, and persistent storage. Perfect for staying organized.",
-    href: "https://github.com/aeonzz/Todo-list-app",
+    href: "https://todo-list-app-aeonzz.vercel.app/",
   },
 ] as const;
