@@ -2,12 +2,13 @@ import { Avatar } from "@/components/avatar";
 import { ExternalLink } from "@/components/external-link";
 import { ProjectCard } from "@/components/project-card";
 import avatar from "@/public/avatar.png";
+import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
   return (
     <main className="grid place-items-center min-h-screen">
-      <div className="max-w-[37.5rem] h-full py-32 px-4 md:px-0">
-        <div className="grid grid-cols-1 grid-rows-[auto_auto_1fr] gap-6">
+      <div className="max-w-[42rem] h-full py-16 px-4 md:px-0 border border-border border-dashed flex items-center">
+        <div className="grid grid-cols-1 grid-rows-[auto_auto_1fr] gap-6 py-4 border-y border-border border-dashed">
           <div className="space-y-3 px-3">
             <Avatar src={avatar} alt="Christian Caneos" />
             <h3 className="text-base font-medium leading-7 text-muted-foreground">
@@ -32,6 +33,16 @@ export default function Home() {
                 {val}
               </ExternalLink>
             ))}
+          </div>
+          <div className="flex items-center justify-center px-3 [&_article]:text-muted-foreground [&_article]:font-semibold">
+            <GitHubCalendar
+              username="aeonzz"
+              blockMargin={3}
+              blockSize={9}
+              fontSize={12}
+              hideColorLegend
+              hideTotalCount
+            />
           </div>
           <div className="py-6 flex flex-col px-3">
             <h3 className="text-lg font-semibold leading-none mb-3">

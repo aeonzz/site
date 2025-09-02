@@ -9,7 +9,7 @@ function ProjectCard({
   return (
     <Link
       prefetch
-      className="w-[calc(100%_+_24px)] rounded-xl p-3 text-sm text-foreground hover:bg-muted transition-all duration-600 ease-out-quad font-medium relative overflow-hidden group -mx-3"
+      className="w-full rounded-xl p-3 text-sm text-foreground hover:bg-muted transition-all duration-600 ease-out-quad font-medium relative overflow-hidden group"
       target="_blank"
       {...props}
     >
