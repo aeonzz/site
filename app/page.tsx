@@ -2,7 +2,6 @@ import { Avatar } from "@/components/avatar";
 import { ExternalLink } from "@/components/external-link";
 import { ProjectCard } from "@/components/project-card";
 import avatar from "@/public/avatar.png";
-import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
   return (
@@ -34,34 +33,29 @@ export default function Home() {
               </ExternalLink>
             ))}
           </div>
-          <div className="flex items-center justify-center px-3 [&_article]:text-muted-foreground [&_article]:font-semibold">
-            <GitHubCalendar
-              username="aeonzz"
-              blockMargin={3}
-              blockSize={9}
-              fontSize={12}
-              hideColorLegend
-              hideTotalCount
-            />
-          </div>
-          <div className="py-6 flex flex-col px-3">
-            <h3 className="text-lg font-semibold leading-none mb-3">
-              Projects
-            </h3>
+          <div className="py-10 flex flex-col px-3 gap-4">
+            <h3 className="text-sm font-medium leading-none mb-3">Projects</h3>
             {[
               {
                 val: "eo-n/ui",
                 href: "https://eo-n.vercel.app/",
                 type: "UI registry",
+                image: "/images/eo-n.png",
               },
               {
                 val: "grydal",
                 href: "https://grydal.vercel.app/",
                 type: "Image gallery",
+                image: "/images/grydal.png",
               },
-            ].map(({ val, href, type }, i) => (
-              <ProjectCard key={i} href={href} type={type}>
-                {val}
+            ].map(({ val, href, type, image }, i) => (
+              <ProjectCard key={i} href={href} type={type} image={image}>
+                <div className="space-y-1 flex flex-col">
+                  <span className="font-semibold text-base">{val}</span>
+                  <span className="block text-xs text-muted-foreground">
+                    {type}
+                  </span>
+                </div>
               </ProjectCard>
             ))}
           </div>

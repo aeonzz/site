@@ -13,7 +13,7 @@ function Avatar({
       width={36}
       height={36}
       alt={alt}
-      className={`rounded-full overflow-hidden aspect-square shrink-0 ${className}`}
+      className={`overflow-hidden aspect-square shrink-0 ${className}`}
       {...props}
     />
   );
