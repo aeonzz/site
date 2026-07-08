@@ -11,14 +11,21 @@ function ProjectCard({
   return (
     <Link
       prefetch
-      className="w-full p-3 text-sm bg-card border border-border text-card-foreground hover:bg-muted transition-all duration-600 ease-out-quad font-medium relative overflow-hidden group"
+      className="w-full p-3 text-sm bg-card border border-border text-card-foreground hover:bg-muted transition-all duration-600 ease-out-quad font-medium relative overflow-hidden group outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       target="_blank"
+      rel="noopener noreferrer"
       {...props}
     >
       <div className="relative z-10 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="relative h-15 aspect-video bg-muted border border-border overflow-hidden">
-            <Image src={image} alt={type} fill className="object-cover" />
+            <Image
+              src={image}
+              alt={type}
+              fill
+              sizes="(min-width: 768px) 120px, 96px"
+              className="object-cover"
+            />
           </div>
           {children}
         </div>

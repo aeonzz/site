@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "shadcn/tailwind.css";
 
 :root {
   --background: oklch(0.1824 0 360);
@@ -8,6 +9,10 @@
   --muted: oklch(0.2158 0 360);
   --muted-foreground: oklch(0.55 0.005 310.93);
   --border: oklch(0.2455 0 360);
+  --icon-swap-dur: 250ms;
+  --icon-swap-blur: 2px;
+  --icon-swap-start-scale: 0.25;
+  --icon-swap-ease: ease-in-out;
 }
 
 @theme inline {
@@ -30,5 +35,110 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 5px;
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+@layer utilities {
+  .diagonal-rail {
+    background-image: repeating-linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--border) 72%, transparent) 0 1px,
+      transparent 1px 6px
+    );
+  }
+
+  .full-bleed-divider {
+    @apply relative;
+  }
+
+  .full-bleed-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    width: 100vw;
+    transform: translateX(-50%);
+    border-bottom: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+    pointer-events: none;
+  }
+
+  .full-bleed-title-divider {
+    @apply relative;
+  }
+
+  .full-bleed-title-divider::before,
+  .full-bleed-title-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .full-bleed-title-divider::before {
+    top: 0;
+    border-top: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+  }
+
+  .full-bleed-title-divider::after {
+    bottom: 0;
+    border-bottom: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+  }
+
+  .t-icon-swap {
+    position: relative;
+    display: inline-grid;
+  }
+
+  .t-icon-swap .t-icon {
+    grid-area: 1 / 1;
+    transition:
+      opacity var(--icon-swap-dur) var(--icon-swap-ease),
+      filter var(--icon-swap-dur) var(--icon-swap-ease),
+      transform var(--icon-swap-dur) var(--icon-swap-ease);
+    will-change: opacity, filter, transform;
+  }
+
+  .t-icon-swap[data-state="a"] .t-icon[data-icon="a"],
+  .t-icon-swap[data-state="b"] .t-icon[data-icon="b"] {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+
+  .t-icon-swap[data-state="a"] .t-icon[data-icon="b"],
+  .t-icon-swap[data-state="b"] .t-icon[data-icon="a"] {
+    opacity: 0;
+    filter: blur(var(--icon-swap-blur));
+    transform: scale(var(--icon-swap-start-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-icon-swap .t-icon {
+    transition: none !important;
   }
 }

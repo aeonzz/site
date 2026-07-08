@@ -1,0 +1,52 @@
+---
+title: eo-n/ui
+href: https://eo-n.vercel.app/
+type: UI registry
+summary: A Base UI-powered component registry for reusable React, Tailwind CSS, and shadcn-style interface patterns.
+image: /images/eo-n.png
+order: 1
+---
+
+![eo-n/ui project preview](/images/eo-n.png)
+
+## Overview
+
+eo-n/ui is a component registry I built for the interface patterns I use the most. It keeps the components, examples, and setup notes in one place, so starting a new project feels less like digging through old code and more like picking the right piece off a shelf.
+
+---
+
+## Why I Built It
+
+I started this when [Base UI](https://base-ui.com/) was still early in development. I wanted to use it as the primitive layer instead of [Radix](https://www.radix-ui.com/), while keeping the same copy-and-own workflow that makes [shadcn/ui](https://ui.shadcn.com/) useful. There was not a registry for that setup yet, so I began building one around Base UI.
+
+I stopped actively maintaining it once shadcn/ui started adopting Base UI. At that point, the original reason for the project was mostly solved upstream, so eo-n/ui became more of a snapshot of that exploration than something I needed to keep expanding.
+
+---
+
+## Highlights
+
+Each component page is written for real use, not just browsing. The docs include install commands, usage snippets, previews, and source examples, so I can see how a component behaves before pulling it into an app.
+
+The registry covers the pieces that show up in almost every product UI: accordions, dialogs, menus, inputs, comboboxes, cards, badges, and form controls. I spent most of the time making them flexible enough to reuse without skipping the details that matter, like keyboard navigation, focus management, and ARIA patterns.
+
+![eo-n/ui component preview](/images/eo-n-2.png)
+
+---
+
+## Tech Stack
+
+The stack is centered on a Next.js docs experience, with TypeScript and Tailwind handling the component code and Fumadocs shaping the registry pages.
+
+<TechStackGrid
+	items={[
+		{ name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs" },
+		{ name: "React", logo: "https://cdn.simpleicons.org/react" },
+		{ name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
+		{ name: "Tailwind CSS", logo: "https://cdn.simpleicons.org/tailwindcss" },
+		{ name: "Vercel", logo: "https://cdn.simpleicons.org/vercel" },
+		{ name: "shadcn/ui", logo: "https://cdn.simpleicons.org/shadcnui" },
+		{ name: "Fumadocs" },
+		{ name: "Zod", logo: "https://cdn.simpleicons.org/zod" },
+		{ name: "ESLint", logo: "https://cdn.simpleicons.org/eslint" },
+	]}
+/>

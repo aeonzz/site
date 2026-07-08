@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import {
+  getPersonJsonLd,
+  getWebsiteJsonLd,
+  serializeJsonLd,
+} from "@/lib/structured-data";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,6 +20,9 @@ export const metadata: Metadata = {
   description:
     "Showcasing the creative work and projects of Aeonz, a passionate developer and designer.",
   metadataBase: new URL("https://aeonz.dev"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Aeonz",
     description: "Explore Aeonz's projects and creative journey.",
@@ -22,10 +30,10 @@ export const metadata: Metadata = {
     siteName: "Aeonz",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Aeonz Open Graph Image",
+        url: "/images/eo-n.png",
+        width: 1366,
+        height: 768,
+        alt: "Aeonz project preview",
       },
     ],
     locale: "en_US",
@@ -35,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aeonz",
     description: "Discover the projects and designs by Aeonz.",
-    images: ["/og-image.jpg"],
+    images: ["/images/eo-n.png"],
     creator: "@aeonz",
   },
 };
@@ -47,7 +55,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(getPersonJsonLd()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(getWebsiteJsonLd()),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
